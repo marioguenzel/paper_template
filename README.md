@@ -6,7 +6,7 @@ This avoids overhead when switching the submission to another conference.
 
 ## How to use?
 
-When starting a new paper, just use the command:
+When starting a new paper, just make a new folder for your paper and use the command inside the folder:
 ```
 bash <(curl -s https://raw.githubusercontent.com/marioguenzel/paper_template/main/makepaper.sh)
 ```
