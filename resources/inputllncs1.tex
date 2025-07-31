@@ -1,0 +1,17 @@
+\usepackage{color}
+\renewcommand\UrlFont{\color{blue}\rmfamily}
+\urlstyle{rm}
+
+\ifsubmission
+    \usepackage{lineno}
+    % \usepackage[switch]{lineno}
+    \linenumbers
+    % fix problem with line numbering around align
+    \makeatletter
+    \let\LN@align\align
+    \let\LN@endalign\endalign
+    \renewcommand{\align}{\linenomath\LN@align}
+    \renewcommand{\endalign}{\LN@endalign\endlinenomath}
+    \makeatother
+\else
+\fi

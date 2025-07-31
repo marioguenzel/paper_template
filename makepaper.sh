@@ -28,7 +28,9 @@ wget -q -P "$RESOURCES_DIR" \
     "https://github.com/dagstuhl-publishing/styles/raw/refs/heads/master/LIPIcs/authors/orcid.pdf" \
     "https://github.com/dagstuhl-publishing/styles/raw/refs/heads/master/LIPIcs/authors/cc-by.pdf" \
     "https://github.com/dagstuhl-publishing/styles/raw/refs/heads/master/LIPIcs/authors/lipics-logo-bw.pdf" \
-    "http://mirrors.ctan.org/macros/latex/contrib/IEEEtran/IEEEtran.cls"
+    "http://mirrors.ctan.org/macros/latex/contrib/IEEEtran/IEEEtran.cls"\
+    "https://mirrors.ctan.org/macros/latex/contrib/llncs/llncs.cls"\
+    "https://mirrors.ctan.org/macros/latex/contrib/llncs/splncs04.bst"
 
 echo "Cleaning up temporary files..."
 rm -rf "$WORKDIR"

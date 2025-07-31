@@ -7,6 +7,7 @@
 \documentclass[conference]{IEEEtran}
 % \documentclass[manuscript,acmsmall,review,anonymous,screen]{acmart}
 % \documentclass[a4paper,USenglish, anonymous]{lipics-v2021}
+% \documentclass[runningheads]{llncs}
 
 
 % === Setting relevant information for submission ===
@@ -38,6 +39,7 @@ ABSTRACT
 \IfClassLoadedTF{IEEEtran}{\input{resources/inputIEEEtran1.tex}}{}
 \IfClassLoadedTF{acmart}{\input{resources/inputacmart1.tex}}{}
 \IfClassLoadedTF{lipics-v2021}{\input{resources/inputlipics1.tex}}{}
+\IfClassLoadedTF{llncs}{\input{resources/inputllncs1.tex}}{}
 
 
 % === COMMANDS ===
@@ -64,6 +66,7 @@ ABSTRACT
 \IfClassLoadedTF{IEEEtran}{\input{resources/inputIEEEtran2.tex}}{}
 \IfClassLoadedTF{acmart}{\input{resources/inputacmart2.tex}}{}
 \IfClassLoadedTF{lipics-v2021}{\input{resources/inputlipics2.tex}}{}
+\IfClassLoadedTF{llncs}{\input{resources/inputllncs2.tex}}{}
 
 % === CONTENT ===
 
@@ -171,6 +174,15 @@ This paper has been generated using the paper template~\cite{papertemplate}.
     \bibliography{sample.bib}
     % \appendix
     % \section{Appendix}
+}{}
+\IfClassLoadedTF{llncs}{
+    % \begin{credits}
+    % \subsubsection{\ackname} 
+    %     % Put acknowledgement here
+    % \end{credits}
+    
+    \bibliographystyle{splncs04}
+    \bibliography{sample}
 }{}
 
 
