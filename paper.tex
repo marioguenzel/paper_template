@@ -2,12 +2,14 @@
 \def\input@path{{resources/}}
 \makeatother
 
+
+% === Choose your class ===
 \documentclass[conference]{IEEEtran}
 % \documentclass[manuscript,acmsmall,review,anonymous,screen]{acmart}
 % \documentclass[a4paper,USenglish, anonymous]{lipics-v2021}
 
 
-%%% Setting relevant information for submission
+% === Setting relevant information for submission ===
 \newcommand{\targetconference}{RTAS 2025}
 \newcommand{\pagelimit}{11}
 \newcommand{\submissionnumber}{TBD}
@@ -28,63 +30,42 @@ ABSTRACT
 % \submissionfalse   % uncomment to set false
 
 
-%%% Common preamble
+% === PREAMBLES ===
+% Common preamble
 \input{resources/preamble.tex}
 
-%%% Class-specific preambles
+% Class-specific preambles
 \IfClassLoadedTF{IEEEtran}{\input{resources/inputIEEEtran1.tex}}{}
 \IfClassLoadedTF{acmart}{\input{resources/inputacmart1.tex}}{}
 \IfClassLoadedTF{lipics-v2021}{\input{resources/inputlipics1.tex}}{}
 
 
-%% COMMANDS:
+% === COMMANDS ===
 \usepackage{resources/mathcommands}
 
-%% DRAW SCHEDULES:
+% === DRAW SCHEDULES ===
 \usepackage{resources/scheduling}
 
-%% THEOREMS:
-% Theorems --
-\usepackage{amsthm}
-
-\newtheorem{thm}{Theorem}%[section]
-\newtheorem{prop}[thm]{Proposition}
-\newtheorem{lem}[thm]{Lemma}
-\newtheorem{cor}[thm]{Corollary}
-\newtheorem{obs}[thm]{Observation}
-
-\theoremstyle{definition}
-\newtheorem{defn}[thm]{Definition}
-\newtheorem{notn}[thm]{Notation}
-
-\theoremstyle{remark}
-\newtheorem{rmk}[thm]{Remark}
-\newtheorem{exmpl}[thm]{Example}
-% --
-
-
-%% WRITING:
+% === WRITING ===
 \newcommand{\papercomment}[3]{{\color{#1}#2:#3}\ClassWarning{}{There are comments left in the paper. [Remove them before submission!]}}
 \newcommand{\mario}[1]{\papercomment{red}{mg}{#1}}
 \newcommand{\kuan}[1]{\papercomment{blue}{kh}{#1}}
 \newcommand{\jj}[1]{\papercomment{orange}{jj}{#1}}
 
 
-%% PAPER SPECIFIC:
+% === PAPER SPECIFIC ===
 \hyphenation{con-straints}
 
-%%% End Preamble
-
-
-
+% ==========
 \begin{document}
 
-%%% Class-specific
+% === INIT AND TITLES ===
+% Class-specific
 \IfClassLoadedTF{IEEEtran}{\input{resources/inputIEEEtran2.tex}}{}
 \IfClassLoadedTF{acmart}{\input{resources/inputacmart2.tex}}{}
 \IfClassLoadedTF{lipics-v2021}{\input{resources/inputlipics2.tex}}{}
 
-% === DOCUMENT ===
+% === CONTENT ===
 
 \section{Introduction}
 \label{sec:introduction}
@@ -114,6 +95,50 @@ This paper has been generated using the paper template~\cite{papertemplate}.
 
 \section{Main Topic}
 
+\begin{definition}[Test]
+    Test test test
+\end{definition}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[yscale=0.5, xscale=0.4]
+    \grid{0}{1}{13}{0.2}{5}
+    \begin{scope}[shift={(0,2)}] % task one
+    	\taskname{$\tau_1$}
+    	
+    	\timeline{0}{14}{}
+    	% no labelling
+    	
+    	\releases{0,5,10}
+    	\deadlines{5,10}
+    	
+    	\exec{0}{1}
+    	\exec{5}{6}
+    	\exec{10}{11}
+    	
+    	% no suspension
+    \end{scope}
+    \begin{scope}[shift={(0,0)}] % task two
+    	\taskname{$\tau_2$}
+    	
+    	\timeline{0}{14}{}
+    	\labelling{0}{13}{2}{0}
+    	
+    	\releases{0}
+    	\deadlines{12}
+    	
+    	\exec{1}{2}
+    	\exec{9}{10}
+    	
+    	\susp{2}{9}
+    \end{scope}
+    \end{tikzpicture}
+    \caption{A nice schedule.}
+    \label{fig:schedule_example}
+\end{figure}
+
+
+
 \section{Evaluation}
 \label{sec:evaluation}
 	
@@ -121,11 +146,12 @@ This paper has been generated using the paper template~\cite{papertemplate}.
 \section{Conclusion}
 \label{sec:conclusion}
 	
+
 % === BIB ===
 \label{last-page}
 \clearpage
 
-%%% Class-specific
+% Class-specific
 \IfClassLoadedTF{IEEEtran}{
     \bibliographystyle{abbrv}
     \bibliography{sample}

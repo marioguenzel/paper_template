@@ -1,18 +1,23 @@
-# paper_template
-A paper template which allows easy switch between different document classes
+# Paper Template
+
+A paper template which allows easy switch between different document classes.
+This avoids overhead when switching the submission to another conference.
 
 
+## How to use?
 
-## Sources
-
-- Lipics https://github.com/dagstuhl-publishing/styles/raw/refs/heads/master/LIPIcs/authors/lipics-v2021.cls (incl cc-by.pdf, orcid.pdf and lipics-logo-bw.pdf)
-- IEEE wget http://mirrors.ctan.org/macros/latex/contrib/IEEEtran/IEEEtran.cls
-- ACM https://portalparts.acm.org/hippo/latex_templates/acmart-primary.zip (+extract cls file) Put the files acmart.cls, acm-jdslogo.png, and ACM-Reference-Format.bst in places where L A T EX can find them (see [1] or the documentation for your T EX system).  (Assuming that ACM is installed, I will not take care of this one now.)
-
-
-
-## Make a paper
-
+When starting a new paper, just use the command:
 ```
 bash <(curl -s https://raw.githubusercontent.com/marioguenzel/paper_template/main/makepaper.sh)
+```
+This runs the ```makepaper.sh``` bash script, which downloads the template and corresponding class files (Except the ACM template which is more dedicated and is assumed to be fully installed.)
+At the top, the class can be chosen and relevant information for the submission is set. 
+There is no further configuration needed. 
+Just use ```latexmk``` to build the paper. 
+When switching the venue and a different class is required, just switch the class as the top and build again. 
+
+**Tip:**<br>
+Add an alias for the bash command to rc file (like bashrc or zshrc). I use the following:
+```
+alias makepaper="bash <(curl -s https://raw.githubusercontent.com/marioguenzel/paper_template/main/makepaper.sh)"
 ```
