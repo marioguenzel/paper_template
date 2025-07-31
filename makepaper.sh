@@ -17,7 +17,7 @@ unzip -q "$ZIP_FILE" -d "$WORKDIR"
 EXTRACTED_DIR=$(find "$WORKDIR" -mindepth 1 -maxdepth 1 -type d)
 
 echo "Copying files (excluding .gitignore and README.md)..."
-rsync -a --exclude='.gitignore' --exclude='README.md' "$EXTRACTED_DIR"/ ./
+rsync -a --exclude='.gitignore' --exclude='README.md' --exclude='makepaper.sh' "$EXTRACTED_DIR"/ ./
 
 # Create resources directory
 mkdir -p "$RESOURCES_DIR"
