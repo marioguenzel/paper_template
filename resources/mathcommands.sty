@@ -1,0 +1,122 @@
+% Updated by
+% 07.02.2022 Mario Günzel
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mathcommands}[2022/02/18 Commands for formulas]
+
+
+% == Required packages ==
+\let\Bbbk\relax
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\let\Bbbk\relax
+
+
+% == Commands ==
+
+% Common operators
+\newcommand{\floor}[1]{\left\lfloor{#1}\right\rfloor}
+\newcommand{\ceiling}[1]{\left\lceil{#1}\right\rceil}
+\newcommand{\setof}[1]{\left\{{#1}\right\}}
+\newcommand{\set}[2]{\left\{#1 \,\middle|\, #2\right\}}
+\makeatletter
+\DeclareRobustCommand{\cev}[1]{% reverse vector
+	{\mathpalette\do@cev{#1}}%
+}
+\newcommand{\do@cev}[2]{%
+	\vbox{\offinterlineskip
+		\sbox\z@{$\m@th#1 x$}%
+		\ialign{##\cr
+			\hidewidth\reflectbox{$\m@th#1\vec{}\mkern2mu$}\hidewidth\cr
+			\noalign{\kern-\ht\z@}
+			$\m@th#1#2$\cr
+		}%
+	}%
+}
+\makeatother
+
+\DeclareMathOperator{\Hom}{Hom} % homomorphism
+\DeclareMathOperator{\im}{im} % image
+\DeclareMathOperator{\Read}{Re} 
+\DeclareMathOperator*{\argmax}{arg\,max} % argmax
+\DeclareMathOperator*{\argmin}{arg\,min} % argmin
+\DeclareMathOperator{\hyp}{\textsc{hyp}}
+\DeclareMathOperator*{\lcm}{\textsc{lcm}}
+
+
+% Caligraphy
+\newcommand{\Abb}{\mathbb{A}}
+\newcommand{\Bbbx}{\mathbb{B}} % \Bbb already defined by mathbb
+\newcommand{\Cbb}{\mathbb{C}}
+\newcommand{\Dbb}{\mathbb{D}}
+\newcommand{\Ebb}{\mathbb{E}}
+\newcommand{\Fbb}{\mathbb{F}}
+\newcommand{\Gbb}{\mathbb{G}}
+\newcommand{\Hbb}{\mathbb{H}}
+\newcommand{\Ibb}{\mathbb{I}}
+\newcommand{\Jbb}{\mathbb{J}}
+\newcommand{\Kbb}{\mathbb{K}}
+\newcommand{\Lbb}{\mathbb{L}}
+\newcommand{\Mbb}{\mathbb{M}}
+\newcommand{\Nbb}{\mathbb{N}}
+\newcommand{\Obb}{\mathbb{O}}
+\newcommand{\Pbb}{\mathbb{P}}
+\newcommand{\Qbb}{\mathbb{Q}}
+\newcommand{\Rbb}{\mathbb{R}}
+\newcommand{\Sbb}{\mathbb{S}}
+\newcommand{\Tbb}{\mathbb{T}}
+\newcommand{\Ubb}{\mathbb{U}}
+\newcommand{\Vbb}{\mathbb{V}}
+\newcommand{\Wbb}{\mathbb{W}}
+\newcommand{\Xbb}{\mathbb{X}}
+\newcommand{\Ybb}{\mathbb{Y}}
+\newcommand{\Zbb}{\mathbb{Z}}
+
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Bcal}{\mathcal{B}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Ecal}{\mathcal{E}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\Gcal}{\mathcal{G}}
+\newcommand{\Hcal}{\mathcal{H}}
+\newcommand{\Ical}{\mathcal{I}}
+\newcommand{\Jcal}{\mathcal{J}}
+\newcommand{\Kcal}{\mathcal{K}}
+\newcommand{\Lcal}{\mathcal{L}}
+\newcommand{\Mcal}{\mathcal{M}}
+\newcommand{\Ncal}{\mathcal{N}}
+\newcommand{\Ocal}{\mathcal{O}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\Qcal}{\mathcal{Q}}
+\newcommand{\Rcal}{\mathcal{R}}
+\newcommand{\Scal}{\mathcal{S}}
+\newcommand{\Tcal}{\mathcal{T}}
+\newcommand{\Ucal}{\mathcal{U}}
+\newcommand{\Vcal}{\mathcal{V}}
+\newcommand{\Wcal}{\mathcal{W}}
+\newcommand{\Xcal}{\mathcal{X}}
+\newcommand{\Ycal}{\mathcal{Y}}
+\newcommand{\Zcal}{\mathcal{Z}}
+
+
+% E2E symbols
+\newcommand{\bw}[1]{\cev{#1}{}}
+\newcommand{\sbw}[1]{\cev{#1\raisebox{1.8pt}{$\scriptstyle *$}}{}}
+\newcommand{\fw}[1]{\vec{#1}{}}
+\newcommand{\wcbc}{\textsc{WCBC}}
+\newcommand{\wcfc}{\textsc{WCFC}}
+\newcommand{\data}{\text{DataAge}}
+\newcommand{\reac}{\text{Reaction}}
+
+\DeclareMathOperator{\re}{re}
+\DeclareMathOperator{\we}{we}
+
+\DeclareMathOperator{\remin}{re^{min}}
+\DeclareMathOperator{\remax}{re^{max}}
+\DeclareMathOperator{\wemin}{we^{min}}
+\DeclareMathOperator{\wemax}{we^{max}}
+
+% other
+\newcommand{\defeq}{\stackrel{\text{def}}{=}}
+\newcommand{\eps}{\varepsilon}

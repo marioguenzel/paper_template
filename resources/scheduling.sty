@@ -1,0 +1,114 @@
+% Updated by
+% 07.02.2022 Mario Günzel
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{scheduling}[2022/02/07 Draw Schedules]
+
+% == required packages ==
+\RequirePackage{tikz}
+
+% == definitions ==
+
+%\definecolor{greycolour}{HTML}{525252}
+%\definecolor{sharelatexcolour}{HTML}{882B21}
+%\definecolor{mybluecolour}{HTML}{394773}
+%\newcommand{\wordcolour}{greycolour}
+
+\newcommand{\releasearrowlength}{1.75}
+\newcommand{\deadlinearrowlength}{1.75}
+\newcommand{\releasearrowprops}{very thick}
+\newcommand{\deadlinearrowprops}{very thick}
+
+% == options ==
+
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+%\DeclareOption{blue}{\renewcommand{\wordcolour}{mybluecolour}}
+%\DeclareOption*{\PackageWarning{examplepackage}{Unknown ‘\CurrentOption’}}
+%\ProcessOptions\relax
+
+% == commands for schedules ==
+
+% task name
+\newcommand{\taskname}[1]{ % name
+	\node[anchor=east] at (0, 0.8) {#1};
+}
+
+\newcommand{\timeline}[3]{ % start, end, label
+	\draw[->] (#1,0) -- (#2,0) node[anchor=north]{#3};
+}
+
+\newcommand{\labelling}[4]{ % start, end, grid, offset
+	\foreach \x in {#1,#3,...,#2}{
+		\draw[](\x-#4,0) -- (\x-#4,-0.25) node[below] {\x}; %\pgfmathtruncatemacro\yi{2*\x}\yi
+	}
+}
+
+% releases and deadlines
+\newcommand*{\releases}[1]{ % list of positions for releases
+	\foreach \x in {#1}{
+		\draw[->, \releasearrowprops] (\x,0) -- (\x, \releasearrowlength);
+	}
+}
+
+\newcommand*{\deadlines}[1]{ % list of positions for deadlines
+	\foreach \x in {#1}{
+		\draw[<-, \deadlinearrowprops] (\x,0) -- (\x, \deadlinearrowlength);
+	}
+}
+
+%suspension and exec
+\newcommand*{\susp}[2]{ % start, end
+	\foreach \x in {0.25, 0.50, 0.75}{\draw (#1,\x) -- (#2, \x);}
+	\draw (#1,0) -- (#1,1);
+	\draw (#2,0) -- (#2,1);}
+
+\newcommand*{\exec}[3][]{ % [props for draw rectangle], start, end
+	\draw[black, #1] (#2,0) rectangle (#3,1);
+}
+
+\newcommand*{\execname}[4][]{ % [props for draw rectangle], start, end, name
+	\draw[black, #1] (#2,0) rectangle (#3,1) node[pos=.5] {#4};
+}
+
+
+% grid
+\newcommand{\grid}[5]{ % tick start, second tick, end tick, height start, height end
+	\foreach \x in {#1,#2,...,#3}{
+		\draw[-,very thin,lightgray, dashed](\x,#4) -- (\x,#5);
+	}  
+}
+
+% Example:
+%\begin{tikzpicture}[yscale=0.5, xscale=0.2]
+%\grid{0}{1}{25}{0.2}{5}
+%\begin{scope}[shift={(0,2)}] % task one
+%	\taskname{$\tau_1$}
+%	
+%	\timeline{0}{14}{}
+%	% no labelling
+%	
+%	\releases{0,5,10}
+%	\deadlines{5,10}
+%	
+%	\exec{0}{1}
+%	\exec{5}{6}
+%	\exec{10}{11}
+%	
+%	% no suspension
+%\end{scope}
+%
+%\begin{scope}[shift={(0,0)}] % task two
+%	\taskname{$\tau_2$}
+%	
+%	\timeline{0}{14}{}
+%	\labelling{0}{13}{2}{0}
+%	
+%	\releases{0}
+%	\deadlines{12}
+%	
+%	\exec{1}{2}
+%	\exec{9}{10}
+%	
+%	\susp{2}{9}
+%\end{scope}
+%\end{tikzpicture}
