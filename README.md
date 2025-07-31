@@ -27,3 +27,8 @@ alias makepaper="bash <(curl -s https://raw.githubusercontent.com/marioguenzel/p
 When the paper is accepted (congrats!) set the submission flag at the top of the latex file to false (uncomment the ```\submissionfalse```). 
 Furthermore, some conferences have an ```anonymous``` flag which should be removed. 
 To enter author information please check the two corresponding preamble/input files in the ```resources/``` folder. 
+
+
+## TODO
+
+- Add llncs template (e.g., RTNS)
